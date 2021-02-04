@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  
+
+<body>
+
+
+  <div id="av_instafeed"></div>
+
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <script>
+
+    var token = 'fb2e77d.47a0479900504cb3ab4a1f626d174d2d', // ваш токен
+      userid = 12345678910, // id пользователя
+      num_photos = 10; // Количество фотографий, которые вы хотите получить
+
+    $.ajax({
+      url: 'https://api.instagram.com/v1/users/' + userid + '/media/recent',
+      dataType: 'jsonp',
+      type: 'GET',
+      data: { access_token: token, count: num_photos },
+      success: function (data) {
+        console.log(data);
+        for (x in data.data) {
+          $('#av_instafeed').append('<li><img src="' + data.data[x].images.low_resolution.url + '"></li>');
+          // data.data[x].link - URL поста в Инстаграме
+          // data.data[x].images.standard_resolution.url - URL изображений 612х612
+        }
+      },
+      error: function (data) {
+        console.log(data); // отправим сообщение в консоль, если появятся ошибки
+      }
+    });
+  </script>
+</body>
+
+</html>
