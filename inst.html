@@ -9,6 +9,13 @@
 
 <body>
 
+  <div
+  class="fb-like"
+  data-share="true"
+  data-width="450"
+  data-show-faces="true">
+</div>
+
 
   <div id="av_instafeed"></div>
 
@@ -16,6 +23,25 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
   <script>
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId      : '701811200490665',
+        xfbml      : true,
+        version    : 'v9.0'
+      });
+      FB.AppEvents.logPageView();
+    };
+  
+    (function(d, s, id){
+       var js, fjs = d.getElementsByTagName(s)[0];
+       if (d.getElementById(id)) {return;}
+       js = d.createElement(s); js.id = id;
+       js.src = "https://connect.facebook.net/en_US/sdk.js";
+       fjs.parentNode.insertBefore(js, fjs);
+     }(document, 'script', 'facebook-jssdk'));
+  </script>
+
+  <!-- <script>
 
     var token = 'fb2e77d.47a0479900504cb3ab4a1f626d174d2d', // ваш токен
       userid = 12345678910, // id пользователя
@@ -38,7 +64,7 @@
         console.log(data); // отправим сообщение в консоль, если появятся ошибки
       }
     });
-  </script>
+  </script> -->
 </body>
 
 </html>
